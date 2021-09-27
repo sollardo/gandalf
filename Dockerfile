@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as ubuntu-base
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
@@ -16,5 +16,4 @@ RUN echo '/usr/sbin/sshd -D' >>/1.sh
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo root:S111334|chpasswd
 RUN chmod 755 /1.sh
-EXPOSE 80
 CMD  /1.sh
