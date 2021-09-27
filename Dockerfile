@@ -1,6 +1,8 @@
-FROM debian
-RUN apt update
-RUN apt install ssh wget npm -y
+FROM ubuntu:18.04
+RUN apt-get upgrade
+RUN set -ex; \
+    apt-get update \
+    && apt-get install ssh wget npm -y
 RUN  npm install -g wstunnel
 RUN mkdir /run/sshd 
 RUN echo 'wstunnel -s 0.0.0.0:80 &' >>/1.sh
